@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MinhasMateriasActivity">
+
+    <!-- Título ou barra de ação -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingBottom="16dp"
+        android:text="Minhas Materias"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- Barra de busca (opcional) -->
+    <EditText
+        android:id="@+id/etBuscarMateria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_search"
+        android:hint="Buscar cursos"
+        android:minHeight="48dp"
+        android:padding="10dp" />
+
+    <!-- RecyclerView para lista de cursos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMinhasMaterias"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:listitem="@layout/item_minha_materia"/>
+
+    <!-- Botão para acessar suporte -->
+    <Button
+        android:id="@+id/btnSuporte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contato com Suporte" />
+</LinearLayout>

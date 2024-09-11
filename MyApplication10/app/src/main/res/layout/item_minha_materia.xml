@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="?attr/selectableItemBackground">
+
+    <!-- Nome do curso -->
+    <TextView
+        android:id="@+id/tvNomeMateria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome do Curso"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Barra de progresso -->
+    <ProgressBar
+        android:id="@+id/pbProgressoMateria"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="50" />
+
+    <!-- Texto de progresso (exemplo: 50% completo) -->
+    <TextView
+        android:id="@+id/tvProgressoMateria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="50% completo" />
+
+    <!-- Botão para continuar curso -->
+    <Button
+        android:id="@+id/btnContinuarMateria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continuar Estudo" />
+
+</LinearLayout>
