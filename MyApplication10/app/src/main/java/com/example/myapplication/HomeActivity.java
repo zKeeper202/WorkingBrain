@@ -23,13 +23,13 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         TextView tvBanner = findViewById(R.id.tvBanner);
-        TextView tvMateriasDestacadas= findViewById(R.id.tvMateriasDestacadas);
+        TextView tvMateriasDestacadas = findViewById(R.id.tvMateriasDestacadas);
         rvMateriasDestacadas = findViewById(R.id.rvMateriasDestacadas);
         TextView tvProgress = findViewById(R.id.tvProgress);
         progressBar = findViewById(R.id.progressBar);
         Button btnMyCourses = findViewById(R.id.btnMinhasMaterias);
-        Button btnNews = findViewById(R.id.btnNovidades);
-        Button btnSettings = findViewById(R.id.btnConfigs);
+        Button btnConfigs = findViewById(R.id.btnConfigs);
+        /*Button btnNews = findViewById(R.id.btnNovidades);*/
 
         // Configurar o RecyclerView para materias em destaque
         rvMateriasDestacadas.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -44,12 +44,13 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        /* Talvez exista essa parte...
         btnNews.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, NovidadesActivity.class);
             startActivity(intent);
-        });
+        });*/
 
-        btnSettings.setOnClickListener(v -> {
+        btnConfigs.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, ConfiguracoesActivity.class);
             startActivity(intent);
         });
@@ -58,8 +59,8 @@ public class HomeActivity extends AppCompatActivity {
     // Método para fornecer dados de exemplo para o RecyclerView
     private List<Materia> getExemplosMaterias() {
         List<Materia> materias = new ArrayList<>();
-        materias.add(new Materia("Português", "Ora pois, quero comer bacalhau com punheta"));
-        materias.add(new Materia("Matemática", "7 com 7 é 14 + 7 = 21"));
+        materias.add(new Materia("Português", "Ora pois, quero comer bacalhau com punheta", 75));
+        materias.add(new Materia("Matemática", "7 com 7 é 14 + 7 = 21", 75));
         // Adicionar mais cursos
         return materias;
     }

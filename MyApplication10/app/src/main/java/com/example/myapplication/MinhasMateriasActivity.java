@@ -26,11 +26,11 @@ public class MinhasMateriasActivity extends AppCompatActivity {
         rvMinhasMaterias.setAdapter(adapter);
     }
 
-    // Simular lista de cursos inscritos
+    // Simular lista de materias inscritas
     private List<Materia> getMateriasInscritos() {
         List<Materia> materias = new ArrayList<>();
-        materias.add(new Materia("Matéria de Mobile", 75));
-        materias.add(new Materia("Matéria de JG", 50));
+        materias.add(new Materia("Matéria de Mobile", "Exemplo", 75));
+        materias.add(new Materia("Matéria de JG", "Exemplo", 50));
         // Adicionar mais matérias conforme necessário
         return materias;
     }
