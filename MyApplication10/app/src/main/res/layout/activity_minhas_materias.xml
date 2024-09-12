@@ -22,12 +22,11 @@
         android:id="@+id/etBuscarMateria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_search"
-        android:hint="Buscar cursos"
+        android:hint="Buscar matérias"
         android:minHeight="48dp"
         android:padding="10dp" />
 
-    <!-- RecyclerView para lista de cursos -->
+    <!-- RecyclerView para lista de matérias -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMinhasMaterias"
         android:layout_width="match_parent"

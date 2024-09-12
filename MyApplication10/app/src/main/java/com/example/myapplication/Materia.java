@@ -4,7 +4,7 @@ public class Materia {
     private String name;
     private String description;
 
-    public Materia(String name, String description) {
+    public Materia(String name, String description, int i) {
         this.name = name;
         this.description = description;
     }

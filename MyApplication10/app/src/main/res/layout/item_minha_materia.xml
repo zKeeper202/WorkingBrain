@@ -5,12 +5,12 @@
     android:padding="10dp"
     android:background="?attr/selectableItemBackground">
 
-    <!-- Nome do curso -->
+    <!-- Nome da matéria -->
     <TextView
         android:id="@+id/tvNomeMateria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome do Curso"
+        android:text="Nome da Matéria"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:text="50% completo" />
 
-    <!-- Botão para continuar curso -->
+    <!-- Botão para continuar matéria -->
     <Button
         android:id="@+id/btnContinuarMateria"
         android:layout_width="wrap_content"
