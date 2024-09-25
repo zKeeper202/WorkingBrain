@@ -11,10 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText etUsername;
-    private EditText etPassword;
-    private Button btnLogin;
+    private EditText etUsername, etPassword;
+    private Button btnLogin, btnRecuperar;
     private TextView tvRegistrar;
+    public static String usuariox, senhax;
+    String host="https://zkeeper202.serv00.net/projeto/";
+
+    String url;
+    String ret;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,26 +29,25 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsuario);
         etPassword = findViewById(R.id.etSenha);
         btnLogin = findViewById(R.id.btnLogin);
-        tvRegistrar = findViewById(R.id.tvRegister);
+        //btnRecuperar = findViewById(R.id.btnRecuperar);
+        tvRegistrar = findViewById(R.id.tvRegistrar);
 
         // Configurar o botão de login
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                handleLogin();
-            }
+            public void onClick(View v) { LidarcomLogin();}
         });
 
         // Configurar o texto para navegação ao cadastro
         tvRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigateToRegister();
+                NavegarpraRegistrar();
             }
         });
     }
 
-    private void handleLogin() {
+    private void LidarcomLogin() {
         String username = etUsername.getText().toString();
         String password = etPassword.getText().toString();
 
@@ -56,8 +59,8 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void navigateToRegister() {
-        Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
-        startActivity(intent);
+    private void NavegarpraRegistrar() {
+        Intent NpC = new Intent(LoginActivity.this, CadastroActivity.class);
+        startActivity(NpC);
     }
 }

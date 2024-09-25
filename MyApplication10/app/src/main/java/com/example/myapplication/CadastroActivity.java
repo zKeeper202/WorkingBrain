@@ -8,18 +8,24 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 import java.util.regex.Pattern;
 
 public class CadastroActivity extends AppCompatActivity {
 
-    private EditText etUsuario;
-    private EditText etEmail;
-    private EditText etSenha;
+    private EditText etUsuario, etEmail, etSenha, etConfSenha;
     private Button btnRegistrar;
     private TextView tvLogin;
+    String host = "https://zkeeper202.serv00.net/projeto/";
+    String url;
+    String ret;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
@@ -27,14 +33,23 @@ public class CadastroActivity extends AppCompatActivity {
         etUsuario = findViewById(R.id.etUsuario);
         etEmail = findViewById(R.id.etEmail);
         etSenha = findViewById(R.id.etSenha);
+        etConfSenha = findViewById(R.id.etConfSenha);
         btnRegistrar = findViewById(R.id.btnRegistrar);
         tvLogin = findViewById(R.id.tvLogin);
 
-        // Configurar o botão de registro
-        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+        // Configurar o botão de cadastro
+        btnRegistrar.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-                LidarComRegistrar();
+            public void onClick(View v)
+            {
+                if (validarCampos())
+                {
+                    LidarComRegistrar();
+                    Intent CpL = new Intent(CadastroActivity.this, LoginActivity.class);
+                    startActivity(CpL);
+                    finish();
+                }
             }
         });
 
@@ -47,32 +62,79 @@ public class CadastroActivity extends AppCompatActivity {
         });
     }
 
-    private void LidarComRegistrar() {
-        String username = etUsuario.getText().toString();
-        String email = etEmail.getText().toString();
-        String password = etSenha.getText().toString();
+    private void LidarComRegistrar()
+    {
+        url = host + "inserirAluno.php";
+        Ion.with(CadastroActivity.this)
+                .load(url)
+                .setBodyParameter("usuario", String.valueOf(etUsuario.getText().toString().isEmpty()))
+                .setBodyParameter("email", String.valueOf(etEmail.getText().toString().isEmpty()))
+                .setBodyParameter("senha", String.valueOf(etSenha.getText().toString()))
+                .asJsonObject()
+                .setCallback(new FutureCallback<JsonObject>()
+                {
+                    @Override
+                    public void onCompleted(Exception e, JsonObject result)
+                    {
+                        ret = result.get("status").getAsString();
+                        if (ret.equals("ok"))
+                        {
+                            Toast.makeText(getApplicationContext(),
+                                    "Cadastro realizado com sucesso!",
+                                    Toast.LENGTH_LONG).show();
 
-        if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Por favor, preencha todos os campos!!", Toast.LENGTH_SHORT).show();
-        } else if (!EmailValido(email)) {
-            Toast.makeText(this, "Formato de e-mail inválido!", Toast.LENGTH_SHORT).show();
-        } else {
-            // Exemplo simples de sucesso
-            Toast.makeText(this, "Registrado com sucesso!", Toast.LENGTH_SHORT).show();
-            // adicionar lógica para armazenar os dados do usuário
-            // e possivelmente iniciar outra atividade ou retornar à tela de login.
-        }
+                            Intent CApL = new Intent(CadastroActivity.this, LoginActivity.class);
+                            CadastroActivity.this.startActivity(CApL);
+
+                        } else
+                        {
+                            Toast.makeText(getApplicationContext(),
+                                    "ERRO!!!",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 
-    private boolean EmailValido(String email) {
+    private void NavegarPraLogin()
+    {
+        // Navegar para a tela de login
+        Intent Logar = new Intent(CadastroActivity.this, LoginActivity.class);
+        startActivity(Logar);
+    }
+
+    private boolean EmailValido(String etEmail)
+    {
         // Regex para validação básica de email
         String emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}";
-        return Pattern.matches(emailPattern, email);
+        return Pattern.matches(emailPattern, etEmail);
     }
 
-    private void NavegarPraLogin() {
-        // Navegar para a tela de login
-        Intent intent = new Intent(CadastroActivity.this, LoginActivity.class);
-        startActivity(intent);
+    private boolean validarCampos()
+    {
+        String nomeUsuario = etUsuario.getText().toString().trim();
+        String senhaUsuario = etSenha.getText().toString().trim();
+        String emailUsuario = etEmail.getText().toString().trim();
+
+        if (nomeUsuario.isEmpty())
+        {
+            Toast.makeText(getApplicationContext(), "O nome do usuário é obrigatório", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (emailUsuario.isEmpty())
+        {
+            Toast.makeText(getApplicationContext(), "O e-mail do usuário é obrigatório", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (senhaUsuario.isEmpty())
+        {
+            Toast.makeText(getApplicationContext(), "A senha é obrigatória", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        return true;
     }
+
 }

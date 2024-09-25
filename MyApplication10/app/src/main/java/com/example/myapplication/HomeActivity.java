@@ -40,8 +40,8 @@ public class HomeActivity extends AppCompatActivity {
 
         // Configurar botões de navegação
         btnMyCourses.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, MinhasMateriasActivity.class);
-            startActivity(intent);
+            Intent HMM = new Intent(HomeActivity.this, MinhasMateriasActivity.class);
+            startActivity(HMM);
         });
 
         /* Talvez exista essa parte...
@@ -51,15 +51,15 @@ public class HomeActivity extends AppCompatActivity {
         });*/
 
         btnConfigs.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, ConfiguracoesActivity.class);
-            startActivity(intent);
+            Intent HC = new Intent(HomeActivity.this, ConfiguracoesActivity.class);
+            startActivity(HC);
         });
     }
 
     // Método para fornecer dados de exemplo para o RecyclerView
     private List<Materia> getExemplosMaterias() {
         List<Materia> materias = new ArrayList<>();
-        materias.add(new Materia("Português", "Ora pois, quero comer bacalhau com punheta", 75));
+        materias.add(new Materia("Português", "Ora pois, iremos roubar o Brasil", 75));
         materias.add(new Materia("Matemática", "7 com 7 é 14 + 7 = 21", 75));
         // Adicionar mais cursos
         return materias;
