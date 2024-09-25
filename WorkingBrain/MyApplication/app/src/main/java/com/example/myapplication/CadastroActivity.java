@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -19,7 +18,7 @@ public class CadastroActivity extends AppCompatActivity {
     private EditText etUsuario, etEmail, etSenha, etConfSenha;
     private Button btnRegistrar;
     private TextView tvLogin;
-    String host = "https://zkeeper202.serv00.net/projeto/";
+    String host = "http://zkeeper202.serv00.net/projeto/";
     String url;
     String ret;
 
@@ -33,7 +32,7 @@ public class CadastroActivity extends AppCompatActivity {
         etUsuario = findViewById(R.id.etUsuario);
         etEmail = findViewById(R.id.etEmail);
         etSenha = findViewById(R.id.etSenha);
-        etConfSenha = findViewById(R.id.etConfSenha);
+        //etConfSenha = findViewById(R.id.etConfSenha);
         btnRegistrar = findViewById(R.id.btnRegistrar);
         tvLogin = findViewById(R.id.tvLogin);
 
@@ -64,12 +63,12 @@ public class CadastroActivity extends AppCompatActivity {
 
     private void LidarComRegistrar()
     {
-        url = host + "inserirAluno.php";
+        url = host + "inserirt.php";
         Ion.with(CadastroActivity.this)
                 .load(url)
-                .setBodyParameter("usuario", String.valueOf(etUsuario.getText().toString().isEmpty()))
-                .setBodyParameter("email", String.valueOf(etEmail.getText().toString().isEmpty()))
-                .setBodyParameter("senha", String.valueOf(etSenha.getText().toString()))
+                .setBodyParameter("usuariox", String.valueOf(etUsuario.getText().toString().isEmpty()))
+                .setBodyParameter("emailx", String.valueOf(etEmail.getText().toString().isEmpty()))
+                .setBodyParameter("senhax", String.valueOf(etSenha.getText().toString()))
                 .asJsonObject()
                 .setCallback(new FutureCallback<JsonObject>()
                 {

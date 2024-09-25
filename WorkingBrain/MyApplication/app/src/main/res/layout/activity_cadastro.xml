@@ -7,18 +7,6 @@
     android:padding="16dp"
     tools:context=".CadastroActivity">
 
-    <EditText
-        android:id="@+id/etConfSenha"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Confirme a Senha"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSenha"
-        tools:ignore="NotSibling" />
 
     <EditText
         android:id="@+id/etUsuario"
@@ -38,7 +26,7 @@
         android:id="@+id/btnRegistrar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:foregroundTint="#03A9F4"
         android:text="Registrar"
         android:textColor="#FFFFFF"
@@ -48,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etConfSenha"
+        app:layout_constraintTop_toBottomOf="@+id/etSenha"
         app:rippleColor="#03A9F4"
         app:strokeColor="#03A9F4" />
 
